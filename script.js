@@ -1,5 +1,17 @@
 'use-strict';
+const applyClassList = () => {
+  let classs = Array.from(document.querySelector('ol')?.children);
+  // Adding Classes list Styles
+  let classs = Array.from(document.querySelector('ol').children);
+  // Adding Classes list Styles
+  classs.forEach((el) => {
+    el.style.background = '#222';
+    el.style.border = '0.0625rem solid #484848';
+    el.children[2].style.borderTop = '0.0625rem solid #484848';
+  });
 
+  return (classs.length = 0 ? false : true);
+};
 const applyClassList = () => {
   let classs = Array.from(document.querySelector('ol').children);
   // Adding Classes list Styles
@@ -38,6 +50,7 @@ const applyDark = () => {
   if (currentUrl.includes('classroom.google.com')) {
     // Calling Required funcs
     applyDarkMain();
+    applyClassList();
     applyDarkSidebar();
     setTimeout(() => {
       let ret = applyClassList();

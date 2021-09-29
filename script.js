@@ -1,45 +1,20 @@
 'use-strict';
-const applyClassList = () => {
-  let classs = Array.from(document.querySelector('ol')?.children);
-  // Adding Classes list Styles
-  let classs = Array.from(document.querySelector('ol').children);
-  // Adding Classes list Styles
-  classs.forEach((el) => {
-    el.style.background = '#222';
-    el.style.border = '0.0625rem solid #484848';
-    el.children[2].style.borderTop = '0.0625rem solid #484848';
-  });
 
-  return (classs.length = 0 ? false : true);
+const addglobalStyles = () => {
+  let style = document.createElement('style');
+  let css = `
+  body{color:#ddd}
+  .apFsO.onkcGd,.apFsO.onkcGd:visited,.nhassd{color: #eee;}.oBSRLe,.TajIHf{color: #a7a7a7;}.rZXyy:hover{box-shadow: none;}.OX4Vcb{background: #222;}.gHz6xd{background:#222;border: 0.0625rem solid #484848}.SZ0kZe,{border-top: 0.0625rem solid #484848;}.Aopndd{background-color: #181818;border:0.0625rem solid #dadce042;}.s2g3Xd,.SZ0kZe{border-top:0.0625rem solid #dadce042;}.d4Fe0d{background-color:#101010;border: 0.0625rem solid #dadce042;}.EZrbnd{color:#eee}.sdDCme{color:#aaa;}.K6Ovqd,.Lzdwhd-BrZSOd,.wZTANe .J1raN{color:#bbb;}.asQXV,.A6dC2c,.K6Ovqd{color:#c5c5c5}.oleV8d{border: 0.0625rem solid #dadce042;}.wZTANe .J1raN:hover{color: #eee}
+  `;
+  style.innerText = css;
+  document.querySelector('head').appendChild(style);
+  console.log('hello', style.innerText);
 };
-const applyClassList = () => {
-  let classs = Array.from(document.querySelector('ol').children);
-  // Adding Classes list Styles
-  classs.forEach((el) => {
-    el.style.background = '#222';
-    el.style.border = '0.0625rem solid #484848';
-    el.children[2].style.borderTop = '0.0625rem solid #484848';
-  });
-  return (classs.length = 0 ? false : true);
-};
-const applyDarkSidebar = () => {
-  let sidebar = document.querySelector('.OX4Vcb');
-  if (!sidebar) return setTimeout(applyDarkSidebar, 2000);
-  let linkTexts = Array.from(document.querySelectorAll('.nhassd'));
-  let CtText = Array.from(document.querySelectorAll('.TajIHf'));
-  linkTexts.forEach((el) => {
-    el.style.color = '#eee';
-  });
-  CtText.forEach((el) => {
-    el.style.color = '#a7a7a7';
-  });
-  sidebar.style.background = '#222';
-};
+
 const applyDarkMain = () => {
   // Selecting the required elements
   let body = document.querySelector('body');
   let nav = document.querySelector('nav');
-
   // Applying Styles
   body.style.backgroundColor = '#111111f5';
   nav.style.background = '#222';
@@ -48,19 +23,12 @@ const applyDarkMain = () => {
 const applyDark = () => {
   let currentUrl = document.location.href;
   if (currentUrl.includes('classroom.google.com')) {
+    ////////////////////////////////////////////////////////
     // Calling Required funcs
     applyDarkMain();
-    applyClassList();
-    applyDarkSidebar();
-    setTimeout(() => {
-      let ret = applyClassList();
-      if (!ret)
-        setTimeout(() => {
-          console.log('Timer registered');
-          applyClassList();
-        }, 3000);
-    }, 3000);
+    addglobalStyles();
   }
 };
 
 window.addEventListener('load', applyDark);
+window.addEventListener('popstate', applyDark);
